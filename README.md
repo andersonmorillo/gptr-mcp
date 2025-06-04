@@ -105,7 +105,7 @@ docker-compose -f docker-compose.standalone.yml up -d
 docker build -t gpt-mcp-server .
 docker run -d \
   --name gpt-mcp-server \
-  -p 8000:8000 \
+  -p 8006:8006 \
   --env-file .env \
   gpt-mcp-server
 ```
@@ -126,7 +126,7 @@ docker build -t gpt-mcp-server .
 docker run -d \
   --name gpt-mcp-server \
   --network n8n-mcp-net \
-  -p 8000:8000 \
+  -p 8006:8006 \
   --env-file .env \
   gpt-mcp-server
 ```
@@ -135,8 +135,8 @@ docker run -d \
 
 Once the server is running, you'll see output indicating that the server is ready to accept connections. You can verify it's working by:
 
-1. Accessing the OpenAPI docs at http://localhost:8000/docs
-2. Testing the MCP endpoint at http://localhost:8000/mcp
+1. Accessing the OpenAPI docs at http://localhost:8006/docs
+2. Testing the MCP endpoint at http://localhost:8006/mcp
 
 ## Integrating with Claude
 
@@ -213,7 +213,7 @@ If you're running with Docker and experiencing issues:
 
 1. Verify the container is running: `docker ps | grep gpt-mcp-server`
 2. Check container logs: `docker logs gpt-mcp-server`
-3. Confirm the server is binding to all interfaces - logs should show listening on 0.0.0.0:8000
+3. Confirm the server is binding to all interfaces - logs should show listening on 0.0.0.0:8006
 4. If you see dependency errors during build:
    - Ensure you're using the updated Dockerfile with Python 3.11
    - Try rebuilding with the `--no-cache` flag: `docker build --no-cache -t gpt-mcp-server .`

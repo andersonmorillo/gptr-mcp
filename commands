@@ -1,0 +1,9 @@
+https://github.com/assafelovic/gptr-mcp
+
+docker-compose -f docker-compose.standalone.yml up -d
+
+
+.venv/Scripts/activate
+python server.py
+
+
